@@ -14,24 +14,19 @@ const bgmStage2 = document.getElementById("bgm-stage2");
 const bgmStage3 = document.getElementById("bgm-stage3");
 const allBgms   = [bgmTitle, bgmStage1, bgmStage2, bgmStage3];
 
-// BGMを切り替える
 function playBgm(name) {
   allBgms.forEach(a => {
     a.pause();
     a.currentTime = 0;
   });
-
   let target = null;
   if (name === "title")  target = bgmTitle;
   if (name === "stage1") target = bgmStage1;
   if (name === "stage2") target = bgmStage2;
   if (name === "stage3") target = bgmStage3;
-
   if (target) {
-    // ブラウザの自動再生制限対策として try/catch
     target.play().catch(() => {
-      // もし再生がブロックされてもゲームは進行できる
-      console.log("BGM autoplay was blocked.");
+      console.log("autoplay blocked");
     });
   }
 }
@@ -64,7 +59,6 @@ function showScreen(stage) {
       break;
     case "clear":
       screenClear.classList.add("active");
-      // クリア時もステージ3のBGM継続でもOKなのでそのまま
       break;
     default:
       screenTitle.classList.add("active");
@@ -72,13 +66,11 @@ function showScreen(stage) {
   }
 }
 
-// スタートボタン
 document.getElementById("btn-start").addEventListener("click", () => {
   showScreen("stage1");
 });
 
-/* --- ステージ1：クイズ --- */
-
+/* ステージ1：クイズ＋ヒント */
 const quizData = [
   {
     q: "この遺跡が眠る場所として最もふさわしいのは？",
@@ -101,7 +93,6 @@ const quizData = [
 ];
 
 let currentQuiz = 0;
-
 const quizQuestion = document.getElementById("quiz-question");
 const quizChoicesContainer = document.getElementById("quiz-choices");
 const quizProgress = document.getElementById("quiz-progress");
@@ -114,7 +105,6 @@ function renderQuiz() {
   quizChoicesContainer.innerHTML = "";
   quizHintText.textContent = "";
   quizProgress.textContent = `問題 ${currentQuiz + 1} / ${quizData.length}`;
-
   data.choices.forEach((choice, idx) => {
     const btn = document.createElement("button");
     btn.textContent = choice;
@@ -139,7 +129,6 @@ function handleQuizAnswer(index) {
   }
 }
 
-// ヒントボタン（ステージ1）
 quizHintBtn.addEventListener("click", () => {
   const data = quizData[currentQuiz];
   quizHintText.textContent = "ヒント： " + data.hint;
@@ -147,8 +136,7 @@ quizHintBtn.addEventListener("click", () => {
 
 renderQuiz();
 
-/* --- ステージ2：謎解き --- */
-
+/* ステージ2：謎解き＋ヒント */
 const puzzleChoices = document.querySelectorAll("#puzzle-choices .choice");
 const puzzleMessage = document.getElementById("puzzle-message");
 const puzzleHintText = document.getElementById("puzzle-hint");
@@ -168,20 +156,16 @@ puzzleChoices.forEach(btn => {
   });
 });
 
-// ヒントボタン（ステージ2）
 puzzleHintBtn.addEventListener("click", () => {
   puzzleHintText.textContent = "ヒント：△と◯が「交互」に並んでいることに注目してみよう。";
 });
 
-/* --- ステージ3：AIミッション風 --- */
-
+/* ステージ3：AIミッション＋ヒント */
 const oracleInput   = document.getElementById("oracle-input");
 const oracleBtn     = document.getElementById("btn-oracle");
 const oracleMessage = document.getElementById("oracle-message");
 const oracleHint    = document.getElementById("oracle-hint");
 const oracleHintBtn = document.getElementById("btn-oracle-hint");
-
-// 正解キーワード
 const KEYWORDS = ["希望", "きぼう", "hope"];
 
 oracleBtn.addEventListener("click", checkOracleAnswer);
@@ -189,11 +173,9 @@ oracleInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") checkOracleAnswer();
 });
 
-// ステージ3：答え判定
 function checkOracleAnswer() {
   const value = oracleInput.value.trim().toLowerCase();
   if (!value) return;
-
   const isCorrect = KEYWORDS.some(k => k.toLowerCase() === value);
   if (isCorrect) {
     oracleMessage.textContent = "オラクル「その言葉…確かに受け取った。」";
@@ -205,7 +187,6 @@ function checkOracleAnswer() {
   }
 }
 
-// ヒントボタン（ステージ3）
 oracleHintBtn.addEventListener("click", () => {
   if (!oracleHint.textContent) {
     oracleHint.textContent = "ヒント①：前を向く気持ち、前に進もうとする“気持ち”を表す二文字の漢字。";
@@ -214,7 +195,7 @@ oracleHintBtn.addEventListener("click", () => {
   }
 });
 
-/* --- クリア画面 --- */
+/* クリア画面 */
 document.getElementById("btn-restart").addEventListener("click", () => {
   currentQuiz = 0;
   renderQuiz();

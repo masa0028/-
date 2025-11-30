@@ -30,16 +30,16 @@ body {
   justify-content: center;
 }
 .bg-title {
-  background-image: url("images/A_digital_painting_for_what_appears_to_be_a_movie_.png");
+  background-image: url("images/title_oracle_ruins.png");
 }
 .bg-stage1 {
-  background-image: url("images/A_digital_painting_in_a_vertical_format_depicts_an.png");
+  background-image: url("images/bg_stage1_gate.png");
 }
 .bg-stage2 {
-  background-image: url("images/A_digital_painting_depicts_an_ancient_chamber_bath.png");
+  background-image: url("images/bg_stage2_runes.png");
 }
 .bg-stage3 {
-  background-image: url("images/A_digital_photograph_depicts_an_ancient_treasure_c.png");
+  background-image: url("images/bg_stage3_treasure.png");
 }
 .overlay {
   width: 100%;
