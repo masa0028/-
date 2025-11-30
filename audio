@@ -1,0 +1,4 @@
+<audio id="bgm-title"  src="audio/bgm_title.wav"  loop></audio>
+<audio id="bgm-stage1" src="audio/bgm_stage1.wav" loop></audio>
+<audio id="bgm-stage2" src="audio/bgm_stage2.wav" loop></audio>
+<audio id="bgm-stage3" src="audio/bgm_stage3.wav" loop></audio>
