@@ -8,22 +8,16 @@
 </head>
 <body>
   <div id="game">
-
-    <!-- タイトル画面 -->
     <section id="screen-title" class="screen active bg-title">
       <div class="overlay">
         <h1 class="game-title">オラクル遺跡からの脱出</h1>
         <button id="btn-start" class="btn primary">冒険を始める</button>
       </div>
     </section>
-
-    <!-- ステージ共通ヘッダー -->
     <header id="hud">
       <div class="hud-left">Stage <span id="stage-number">1</span>/3</div>
       <div class="hud-right">オラクル遺跡</div>
     </header>
-
-    <!-- ステージ1：クイズ -->
     <section id="screen-stage1" class="screen bg-stage1">
       <div class="overlay panel">
         <h2>知識の門</h2>
@@ -32,8 +26,6 @@
         <p id="quiz-progress" class="sub-text"></p>
       </div>
     </section>
-
-    <!-- ステージ2：謎解き -->
     <section id="screen-stage2" class="screen bg-stage2">
       <div class="overlay panel">
         <h2>石版の間</h2>
@@ -51,8 +43,6 @@
         <p id="puzzle-message" class="sub-text"></p>
       </div>
     </section>
-
-    <!-- ステージ3：AIミッション風 -->
     <section id="screen-stage3" class="screen bg-stage3">
       <div class="overlay panel">
         <h2>オラクルの間</h2>
@@ -67,8 +57,6 @@
         <p id="oracle-message" class="sub-text"></p>
       </div>
     </section>
-
-    <!-- クリア画面 -->
     <section id="screen-clear" class="screen bg-stage3">
       <div class="overlay panel">
         <h2>脱出成功！</h2>
@@ -80,9 +68,7 @@
         <button id="btn-restart" class="btn">もう一度遊ぶ</button>
       </div>
     </section>
-
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
