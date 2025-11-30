@@ -1,8 +1,88 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head><meta charset="UTF-8"><title>オラクル遺跡からの脱出</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="style.css"></head>
+<head>
+  <meta charset="UTF-8" />
+  <title>オラクル遺跡からの脱出</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
-<p>画像を入れれば動きます。</p>
-<script src="script.js"></script>
+  <div id="game">
+
+    <!-- タイトル画面 -->
+    <section id="screen-title" class="screen active bg-title">
+      <div class="overlay">
+        <h1 class="game-title">オラクル遺跡からの脱出</h1>
+        <button id="btn-start" class="btn primary">冒険を始める</button>
+      </div>
+    </section>
+
+    <!-- ステージ共通ヘッダー -->
+    <header id="hud">
+      <div class="hud-left">Stage <span id="stage-number">1</span>/3</div>
+      <div class="hud-right">オラクル遺跡</div>
+    </header>
+
+    <!-- ステージ1：クイズ -->
+    <section id="screen-stage1" class="screen bg-stage1">
+      <div class="overlay panel">
+        <h2>知識の門</h2>
+        <p id="quiz-question" class="text-main"></p>
+        <div id="quiz-choices" class="choices"></div>
+        <p id="quiz-progress" class="sub-text"></p>
+      </div>
+    </section>
+
+    <!-- ステージ2：謎解き -->
+    <section id="screen-stage2" class="screen bg-stage2">
+      <div class="overlay panel">
+        <h2>石版の間</h2>
+        <p class="text-main">
+          壁一面のルーンが淡く光っている…<br>
+          「次の並びで、？ に入る記号はどれだ？」
+        </p>
+        <p class="puzzle-seq">△　◯　△　◯　△　？</p>
+        <div id="puzzle-choices" class="choices">
+          <button class="btn choice" data-correct="true">◯</button>
+          <button class="btn choice">□</button>
+          <button class="btn choice">☆</button>
+          <button class="btn choice">◇</button>
+        </div>
+        <p id="puzzle-message" class="sub-text"></p>
+      </div>
+    </section>
+
+    <!-- ステージ3：AIミッション風 -->
+    <section id="screen-stage3" class="screen bg-stage3">
+      <div class="overlay panel">
+        <h2>オラクルの間</h2>
+        <p class="text-main">
+          AIオラクル：<br>
+          「ここまで来たか…最後の問いに答えよ。<br>
+          人が困難を越えるために、胸に灯す“たった一つの言葉”…<br>
+          それを入力せよ。」
+        </p>
+        <input id="oracle-input" type="text" placeholder="ひらがな or 漢字で入力" />
+        <button id="btn-oracle" class="btn primary">答える</button>
+        <p id="oracle-message" class="sub-text"></p>
+      </div>
+    </section>
+
+    <!-- クリア画面 -->
+    <section id="screen-clear" class="screen bg-stage3">
+      <div class="overlay panel">
+        <h2>脱出成功！</h2>
+        <p class="text-main">
+          宝箱がまばゆい光を放ち、遺跡全体が静かに震える…。<br>
+          AIオラクル：<br>
+          「見事だ。お前たちの“心”こそ、真の宝だ。」
+        </p>
+        <button id="btn-restart" class="btn">もう一度遊ぶ</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
